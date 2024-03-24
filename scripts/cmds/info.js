@@ -65,7 +65,7 @@ module.exports = {
     const ownerData = await usersData.get(ownerUid);
     const ownerName = ownerData.name;
 
-    const link = "https://i.ibb.co/q9ZrZPW/image.jpg";
+    const link = "https://i.imgur.com/Peb0sQb.png";
 
     const totalMemory = require('os').totalmem();
     const freeMemory = require('os').freemem();
@@ -76,7 +76,7 @@ module.exports = {
 
     const combinedMessage =
       `Owner: ${ownerName}\n\n` +
-      `Bot is up for:\n${uptimeString}\n\n` +
+      `${uptimeString}\n\n` +
       `As of ${nepalTime},\n` +
       `- Total Users: ${allUsers.length}\n` +
       `- Total Threads: ${allThreads.length}\n\n` +
@@ -87,8 +87,8 @@ module.exports = {
       `📆 Date (BS): ${bsDateStr}\n` +
       `📅 Date (AD): ${adDateStr}\n‎\n` +
       `🌐 Prefix: [ ${prefix} ]\n\n` +
-      `📀 | Disk Information:\n        ${generateProgressBar((diskUsage.used / diskUsage.total) * 100)}\n        Usage: ${prettyBytes(diskUsage.used)}\n        Total: ${prettyBytes(diskUsage.total)}\n\n` +
-      `💾 | Memory Information:\n        ${generateProgressBar((process.memoryUsage().rss / totalMemory) * 100)}\n        Usage: ${processMemory}\n        Total: ${prettyBytes(totalMemory)}\n\n` +
+      `💾 | Disk Information:\n        ${generateProgressBar((diskUsage.used / diskUsage.total) * 100)}\n        Usage: ${prettyBytes(diskUsage.used)}\n        Total: ${prettyBytes(diskUsage.total)}\n\n` +
+      `💽 | Memory Information:\n        ${generateProgressBar((process.memoryUsage().rss / totalMemory) * 100)}\n        Usage: ${processMemory}\n        Total: ${prettyBytes(totalMemory)}\n\n` +
       `💻 | Ram Information:\n        ${generateProgressBar(((totalMemory - freeMemory) / totalMemory) * 100)}\n        Usage: ${prettyBytes(totalMemory - freeMemory)}\n        Total: ${prettyBytes(totalMemory)}`;
 
     api.setMessageReaction("✅", event.messageID, () => {}, true);
@@ -131,7 +131,7 @@ function generateProgressBar(percentage) {
   const totalSections = 10;
   const filledSections = Math.ceil((percentage / 100) * totalSections);
 
-  const progressBar = `[${'█'.repeat(filledSections)}${'▒'.repeat(totalSections - filledSections)}]`;
+  const progressBar = `${'█'.repeat(filledSections)}${'░'.repeat(totalSections - filledSections)}`;
 
   return progressBar;
 }
