@@ -4,7 +4,7 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "🐔 | S A R K A R"
+const doNotDelete = "enjoy*"
 
 module.exports = {
     config: {
@@ -33,11 +33,11 @@ module.exports = {
         },
         priority: 1
     },
-    
+
     langs: {
        en: {
             help: "╭─────────────⭓\n%1\n├─────⭔\n│ Page [ %2/%3 ]\n│ Currently, the bot has %4 commands that can be used\n│ » Type %5help <page> to view the command list\n│ » Type %5help to view the details of how to use that command\n├────────⭔\n│ %6\n╰─────────────⭓",
-            help2: "%1\n» Total %2 commands\n» %4",
+            help2: "%1\n👍 Total %2 commands\n%4",
             commandNotFound: "Command \"%1\" does not exist.",
             getInfoCommand: "─── 𝖭𝖠𝖬𝖤 ────⭓\n» %1\n─── 𝖨𝖭𝖥𝖮\n» 𝖠𝗅𝗂𝖺𝗌𝖾𝗌: %3\n» 𝖮𝗍𝗁𝖾𝗋 𝗇𝖺𝗆𝖾𝗌: %4\n» 𝖵𝖾𝗋𝗌𝗂𝗈𝗇: %5\n» 𝖱𝗈𝗅𝖾: %6\n» 𝖢𝗈𝗈𝗅𝖽𝗈𝗐𝗇: %7s\n» 𝖠𝗎𝗍𝗁𝗈𝗋: %8\n» 𝖣𝖾𝗌𝖼𝗋𝗂𝗉𝗍𝗂𝗈𝗇: %2\n\n─── 𝖴𝖲𝖠𝖦𝖤 𝖦𝖴𝖨𝖣𝖤\n%9\n\n─── 𝖭𝖮𝖳𝖤𝖲\n• The content inside <XXX> can be changed\n• The content inside [a|b|c] is a or b or c",
         onlyInfo: "── INFO ────⭓\n» Command name: %1\n» Description: %2\n» Aliases: %3\n» Other names: %4\n» Version: %5\n» Role: %6\n» Cooldown: %7s\n» Author: %8\n─────────────⭔",
@@ -79,7 +79,7 @@ module.exports = {
         const files = await fs.readdir(folderPath);
 
         const attachments = [];
-        
+
         for (const file of files) {
         const filePath = path.join(folderPath, file);
         const fileStream = fs.createReadStream(filePath);
@@ -146,7 +146,7 @@ await message.reply({ body: getLang("help", msg, page, totalPage, commands.size,
     let msg = "";
     for (const category of sortedCategories) {
         const commands = categoryCommands.get(category);
-        msg += `───⌈ ${category} ⌋───\n${commands.join(", ")}\n\n`;
+        msg += `─── ${category} ───\n${commands.join(", ")}\n\n`;
     }
 
     await message.reply({ body: getLang("help2", msg, commands.size, prefix, doNotDelete), attachment: messageContent.attachment });
@@ -257,9 +257,9 @@ await message.reply({ body: getLang("help", msg, page, totalPage, commands.size,
             return message.reply(formSendMessage);
         }
     },
-    
+
  onChat: async function ({ message, event }) {
-      
+
     const isAdmin = config.adminBot.includes(event.senderID);
 
     if (event.body && event.body.toLowerCase() === "help file" && isAdmin) {
