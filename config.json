@@ -18,15 +18,15 @@
     "hideNotiMessage": true
   },
   "adminBot": [
-    "100086975430183"
+    "61557613044721"
   ],
   "whiteListMode": {
     "enable": false,
     "whiteListIds": [],
     "notes": "if you enable this feature, only the ids in the whiteListIds section can use the bot"
   },
-  "nickNameBot": "‎",
-  "prefix": "/",
+  "nickNameBot": "‎Miku Nakano",
+  "prefix": ",",
   "database": {
     "type": "sqlite",
     "uriMongodb": "",
